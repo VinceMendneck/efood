@@ -20,9 +20,8 @@ export const HeroBar = styled.header`
 `
 export const HeroText = styled.p`
   font-weight: 900;
+  margin: 0 auto;
   font-size: 36px;
-  line-height: 100%;
-  letter-spacing: 0%;
   margin-bottom: 40px;
   max-width: 1366px;
 `

@@ -1,14 +1,32 @@
-import { Hero } from './components/homeComp/Hero'
-import { Banner } from './components/menuComp/Banner'
-import { Header } from './components/menuComp/Header'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { GlobalCss } from './styles'
+import { Home } from './pages/Home'
+import { Header } from './components/menuComp/Header'
+import { Banner } from './components/menuComp/Banner'
+import { Menu } from './components/menuComp/Menu'
+
+const rotas = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/ladolce',
+    element: (
+      <>
+        <Header />
+        <Banner />
+        <Menu />
+      </>
+    )
+  }
+])
 
 function App() {
   return (
     <>
       <GlobalCss />
-      <Header />
-      <Banner />
+      <RouterProvider router={rotas} />
     </>
   )
 }

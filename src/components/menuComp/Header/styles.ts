@@ -46,8 +46,6 @@ export const LinkCart = styled.a`
   color: ${cores.rosa};
   font-weight: 900;
   font-size: 18px;
-  line-height: 100%;
-  letter-spacing: 0%;
   margin-top: -25px;
   white-space: nowrap;
 

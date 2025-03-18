@@ -11,8 +11,6 @@ export const Imagem = styled.div`
   display: flex;
   color: ${cores.branco};
   font-size: 32px;
-  line-height: 100%;
-  letter-spacing: 0%;
 `
 
 export const Titulo = styled.h2`

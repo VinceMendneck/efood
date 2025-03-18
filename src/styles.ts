@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const cores = {
   rosa: '#E66767',
@@ -15,6 +15,8 @@ export const GlobalCss = createGlobalStyle`
   font-family: Roboto, sans-serif;
   list-style: none;
   text-decoration: none;
+  line-height: 100%;
+  letter-spacing: 0;
 
   body{
     background-color: ${cores.rosaFundo};
