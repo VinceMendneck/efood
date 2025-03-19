@@ -1,11 +1,15 @@
+import { BannerM } from '../../../models/Product'
 import { Imagem, TagType, Titulo } from './styles'
-import banner from '../../../assets/images/banner_macarrao.png'
 
-export const Banner = () => (
-  <Imagem style={{ backgroundImage: `url(${banner})` }}>
+type Props = {
+  banner: BannerM
+}
+
+export const Banner = ({ banner }: Props) => (
+  <Imagem style={{ backgroundImage: `url(${banner.banner})` }}>
     <div className="container">
-      <TagType>Italiana</TagType>
-      <Titulo>La Dolce Vita Trattoria</Titulo>
+      <TagType>{banner.tag}</TagType>
+      <Titulo>{banner.restaurant}</Titulo>
     </div>
   </Imagem>
 )

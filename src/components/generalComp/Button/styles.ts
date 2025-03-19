@@ -27,9 +27,12 @@ export const ButtonCarrinho = styled.button`
   color: ${cores.rosa};
   background-color: ${cores.rosaRodape};
   display: block;
-  padding: 4px 6px;
-  justify-content: center;
-  align-items: center
+  width: 100%;
+  padding: 4px 0;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
 
   &:hover {
     color: ${cores.rosaRodape};

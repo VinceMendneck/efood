@@ -7,7 +7,7 @@ export const Header = () => (
       <nav>
         <HeaderLinks>
           <LinkItem>
-            <LinkCart href="#">Restaurantes</LinkCart>
+            <LinkCart href="/">Restaurantes</LinkCart>
           </LinkItem>
           <img src={logo} alt="EFOODS" />
           <LinkItem>
