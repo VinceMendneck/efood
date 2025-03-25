@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 import { cores } from '../../../styles'
 import { Link } from 'react-router-dom'
+import { ButtonHTMLAttributes } from 'react'
+
+interface BtnCarrinhoProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  title: string
+}
 
 export const ButtonContainer = styled.div`
   font-weight: 700;
@@ -13,26 +18,29 @@ export const ButtonSaibaMais = styled(Link)`
   color: ${cores.rosaRodape};
   background-color: ${cores.rosa};
   display: inline-block;
-  padding: 4px 6px 3px 6px;
+  padding: 4px 6px;
   align-items: center;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     color: ${cores.rosa};
     background-color: ${cores.rosaRodape};
   }
 `
-export const ButtonCarrinho = styled.button`
+
+export const ButtonCarrinho = styled.button<BtnCarrinhoProps>`
   border: 1px solid ${cores.rosaRodape};
   color: ${cores.rosa};
   background-color: ${cores.rosaRodape};
   display: block;
   width: 100%;
-  padding: 4px 0;
+  padding: 4px 6px;
   box-sizing: border-box;
   text-align: center;
   font-weight: 700;
   font-size: 14px;
+  cursor: pointer;
 
   &:hover {
     color: ${cores.rosaRodape};

@@ -15,7 +15,6 @@ export const GlobalCss = createGlobalStyle`
   font-family: Roboto, sans-serif;
   list-style: none;
   text-decoration: none;
-  line-height: 100%;
   letter-spacing: 0;
 
   body{

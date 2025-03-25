@@ -3,9 +3,15 @@ import { cores } from '../../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
-  background-color: ${cores.branco};
   width: 472px;
   position: relative;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 217px;
+    object-fit: cover;
+  }
 
   ${TagContainer} {
     margin-right: 8px;
@@ -59,17 +65,26 @@ export const Infos = styled.div`
   top: 0;
   right: 0;
 `
+
 export const Btn = styled.div`
-  margin-bottom: 8px;
   margin-left: 8px;
+  margin-bottom: 8px;
+  align-self: flex-start;
 `
+
 export const CardImg = styled.div`
   img {
     margin-bottom: -11px;
   }
 `
+
 export const Content = styled.div`
   padding-top: 10px;
   border: 1px solid ${cores.rosa};
+  background-color: ${cores.branco};
   border-top: 0;
+  min-height: 234px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `

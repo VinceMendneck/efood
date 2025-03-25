@@ -16,52 +16,60 @@ import {
 type Props = {
   image: string
   title: string
-  type: string
-  infos?: string[]
+  infos: boolean
   rate: number
+  type: string
   description: string
-  link: string
+  id: number
 }
 
 export const Restaurant = ({
   image,
   title,
-  infos = [],
+  infos,
   rate,
   type,
   description,
-  link
-}: Props) => (
-  <Card>
-    <CardImg>
-      <img src={image} alt={title} />
-    </CardImg>
-    <Content>
-      <Profile>
-        <Titulo>{title}</Titulo>
-        <Rating>
-          <Titulo>
-            <span>{rate}</span>
-          </Titulo>
-          <img src={estrela} alt="Estrela" />
-        </Rating>
-      </Profile>
-      <Infos>
-        {infos.map((info) => (
-          <Tag key={info}>
-            <span>{info}</span>
+  id
+}: Props) => {
+  const getDescricao = (description: string) => {
+    if (description.length > 321) {
+      return description.slice(0, 318) + '...'
+    }
+    return description
+  }
+  return (
+    <Card>
+      <CardImg>
+        <img src={image} alt={title} />
+      </CardImg>
+      <Content>
+        <Profile>
+          <Titulo>{title}</Titulo>
+          <Rating>
+            <Titulo>
+              <span>{rate}</span>
+            </Titulo>
+            <img src={estrela} alt="Estrela" />
+          </Rating>
+        </Profile>
+        <Infos>
+          {infos && (
+            <Tag>
+              <span>Destaque da semana</span>
+            </Tag>
+          )}
+          <Tag>
+            <span>{type}</span>
           </Tag>
-        ))}
-        <Tag>
-          <span>{type}</span>
-        </Tag>
-      </Infos>
-      <Descricao>{description}</Descricao>
-      <Btn>
-        <BtnSaibaMais to={link} title={title}>
-          {'Saiba mais'}
-        </BtnSaibaMais>
-      </Btn>
-    </Content>
-  </Card>
-)
+        </Infos>
+        <Descricao>{getDescricao(description)}</Descricao>
+        <Btn>
+          <BtnSaibaMais to={`restaurante/${id}`} title={title}>
+            {'Saiba mais'}
+          </BtnSaibaMais>
+        </Btn>
+      </Content>
+    </Card>
+  )
+}

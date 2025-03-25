@@ -5,22 +5,23 @@ export const CardMenu = styled.div`
   background-color: ${cores.rosa};
   color: ${cores.rosaRodape};
   padding: 8px;
-  width: 320px;
-  height: 338px;
   box-sizing: border-box;
-  display: flex; /* Transforma o card em um contêiner flex */
-  flex-direction: column; /* Alinha os filhos verticalmente */
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
 
   img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 167px;
+    object-fit: cover;
+    border-radius: 8px;
   }
 `
 
 export const TituloMenu = styled.h3`
   font-weight: 900;
   font-size: 16px;
-  margin-top: 8px; /* Respeita o padding do topo */
+  margin-top: 8px;
   margin-bottom: 8px;
   display: block;
 `
@@ -29,9 +30,9 @@ export const DescricaoMenu = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  flex-grow: 1; /* Faz a descrição ocupar o espaço disponível e se centralizar */
+  flex-grow: 1;
   display: flex;
-  align-items: center; /* Centraliza o texto verticalmente no espaço disponível */
+  align-items: center;
   margin-bottom: 8px;
 `
 
