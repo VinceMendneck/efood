@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../../styles'
+import { cores, breakpoints } from '../../../styles'
 import lixo from '../../../assets/images/lixeira-de-reciclagem.png'
 
 export const Overlay = styled.div`
@@ -35,13 +35,17 @@ export const Sidebar = styled.aside`
   max-width: 360px;
   width: 100%;
   display: flex;
-  flex-direction: column; // Garante que os elementos dentro do Sidebar sejam empilhados verticalmente
-  height: 100%; // Faz o Sidebar ocupar toda a altura disponível
+  flex-direction: column;
+  height: 100%;
 
   p {
     color: ${cores.rosaRodape};
     font-weight: 700;
     font-size: 14px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 280px;
   }
 `
 

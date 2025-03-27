@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { cores } from '../../../styles'
+import { cores, breakpoints } from '../../../styles'
 
 export const ModalA = styled.div`
   position: fixed;
@@ -24,6 +24,11 @@ export const ModalA = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    align-items: flex-start;
+    padding: 20px;
+  }
 `
 
 export const ModalB = styled.div`
@@ -47,6 +52,18 @@ export const ModalB = styled.div`
     width: 16px;
     height: 16px;
     cursor: pointer;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      top: 2px;
+      right: 2px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 95%;
+    height: auto;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 `
 
@@ -55,6 +72,12 @@ export const ModalContent = styled.div`
   height: 100%;
   padding: 32px;
   gap: 24px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+  }
 `
 
 export const ImageContainer = styled.div`
@@ -66,6 +89,11 @@ export const ImageContainer = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: 0;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    height: 200px;
   }
 `
 
@@ -81,5 +109,9 @@ export const DetailsContainer = styled.div`
     width: auto !important;
     margin-top: 16px;
     margin-bottom: 20px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
   }
 `

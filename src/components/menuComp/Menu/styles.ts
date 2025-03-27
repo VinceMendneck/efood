@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../../styles'
+import { breakpoints, cores } from '../../../styles'
 
 export const CardMenu = styled.div`
   background-color: ${cores.rosa};
@@ -15,6 +15,9 @@ export const CardMenu = styled.div`
     height: 167px;
     object-fit: cover;
     border-radius: 8px;
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 70%;
   }
 `
 
