@@ -9,4 +9,8 @@ export const TagContainer = styled.div`
   text-align: center;
   padding: 4px 6px;
   display: inline-block;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
 `

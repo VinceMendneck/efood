@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../../styles'
 import { TagContainer } from '../Tag/styles'
+import { Tag } from '../Tag'
 
 export const Card = styled.div`
   width: 472px;
