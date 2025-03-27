@@ -10,7 +10,7 @@ export const Imagem = styled.div`
   margin-top: -80px;
   display: flex;
   color: ${cores.branco};
-  font-size: 32px;
+  font-size: 27px;
   position: relative;
   align-items: center;
   @media (max-width: ${breakpoints.desktop}) {

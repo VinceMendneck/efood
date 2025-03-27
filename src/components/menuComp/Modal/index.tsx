@@ -53,8 +53,8 @@ export const Modal = ({
         preco
       })
     )
-    dispatch(open()) // Abre o carrinho
-    onClose() // Fecha o modal
+    dispatch(open())
+    onClose()
   }
 
   return (

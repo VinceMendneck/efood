@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../../styles'
+import { cores, breakpoints } from '../../../styles'
 import { Link } from 'react-router-dom'
 import { ButtonHTMLAttributes } from 'react'
 
@@ -11,6 +11,10 @@ export const ButtonContainer = styled.div`
   font-weight: 700;
   font-size: 14px;
   text-decoration: none;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 10px;
+  }
 `
 
 export const ButtonSaibaMais = styled(Link)`
@@ -26,6 +30,10 @@ export const ButtonSaibaMais = styled(Link)`
   &:hover {
     color: ${cores.rosa};
     background-color: ${cores.rosaRodape};
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 2px 4px;
   }
 `
 

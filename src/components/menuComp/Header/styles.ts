@@ -113,6 +113,7 @@ export const LinkCart = styled.a`
   font-size: 18px;
   margin-top: -25px;
   white-space: nowrap;
+  cursor: pointer;
 
   @media (max-width: ${breakpoints.desktop}) {
     font-size: 16px;

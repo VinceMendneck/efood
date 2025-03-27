@@ -11,17 +11,15 @@ export const MenuList = ({ restaurants }: Props) => (
     <List>
       {restaurants.map((restaurant) =>
         restaurant.cardapio.map((item) => (
-          <>
-            <Menu
-              image={item.foto}
-              title={item.nome}
-              description={item.descricao}
-              portion={item.porcao}
-              preco={item.preco}
-              key={item.id}
-              id={item.id}
-            />
-          </>
+          <Menu
+            key={item.id}
+            image={item.foto}
+            title={item.nome}
+            description={item.descricao}
+            portion={item.porcao}
+            preco={item.preco}
+            id={item.id}
+          />
         ))
       )}
     </List>

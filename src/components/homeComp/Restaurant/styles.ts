@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../../styles'
+import { breakpoints, cores } from '../../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
@@ -11,6 +11,16 @@ export const Card = styled.div`
     width: 100%;
     height: 217px;
     object-fit: cover;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 8px;
+
+    img {
+      height: 140px;
+    }
   }
 
   ${TagContainer} {
@@ -26,6 +36,11 @@ export const Profile = styled.div`
   margin-bottom: 16px;
   padding-left: 8px;
   padding-right: 8px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 4px 2px;
+    margin-bottom: 12px;
+  }
 `
 
 export const Rating = styled.div`
@@ -38,6 +53,15 @@ export const Rating = styled.div`
     width: 21px;
     height: 21px;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    gap: 2px;
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
 `
 
 export const Titulo = styled.h3`
@@ -45,6 +69,10 @@ export const Titulo = styled.h3`
   font-size: 18px;
   color: ${cores.rosa};
   margin: 0;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 13px;
+  }
 `
 
 export const Descricao = styled.p`
@@ -56,6 +84,13 @@ export const Descricao = styled.p`
   display: block;
   margin-left: 8px;
   margin-right: 8px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 10px;
+    line-height: 14px;
+    padding: 8px 2px;
+    margin: 0 2px;
+  }
 `
 
 export const Infos = styled.div`
@@ -64,17 +99,33 @@ export const Infos = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 4px;
+    margin-right: 2px;
+  }
 `
 
 export const Btn = styled.div`
   margin-left: 8px;
   margin-bottom: 8px;
   align-self: flex-start;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-left: 2px;
+    margin-bottom: 2px;
+  }
 `
 
 export const CardImg = styled.div`
   img {
     margin-bottom: -11px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    img {
+      margin-bottom: -4px;
+    }
   }
 `
 
@@ -87,4 +138,9 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    min-height: 160px;
+    padding-top: 4px;
+  }
 `

@@ -22,7 +22,11 @@ export const Header = () => {
             <LinkItem>
               <LinkCart href="/">Restaurantes</LinkCart>
             </LinkItem>
-            <img src={logo} alt="EFOODS" />
+            <LinkItem>
+              <LinkCart href="/">
+                <img src={logo} alt="EFOODS" />
+              </LinkCart>
+            </LinkItem>
             <LinkItem>
               <LinkCart onClick={openCart}>
                 {items.length} produto(s) no carrinho
