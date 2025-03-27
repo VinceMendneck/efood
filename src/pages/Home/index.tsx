@@ -1,6 +1,6 @@
 import { Hero } from '../../components/homeComp/Hero'
 import { RestaurantsList } from '../../components/homeComp/RestaurantsList'
-import { useEffect, useState } from 'react'
+import { useGetRestaurantsQuery } from '../../services/api'
 
 export type Restaurants = {
   id: number
@@ -21,13 +21,16 @@ export type Restaurants = {
 }
 
 export const Home = () => {
-  const [restaurantes, setRestaurantes] = useState<Restaurants[]>([])
+  const { data: restaurantes, isLoading } = useGetRestaurantsQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res))
-  }, [])
+  if (isLoading) {
+    return <div>Carregando...</div>
+  }
+
+  if (!restaurantes) {
+    return <div>Nenhum restaurante encontrado</div>
+  }
+
   return (
     <>
       <Hero />

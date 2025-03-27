@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { BannerM } from '../../models/Product'
 import { MenuList } from '../../components/menuComp/MenuList'
 import { Header } from '../../components/menuComp/Header'
 import { Banner } from '../../components/menuComp/Banner'
+import { useGetRestaurantByIdQuery } from '../../services/api'
+import { Cart } from '../../components/menuComp/Cart'
 
 export type Restaurants = {
   id: number
@@ -25,20 +26,19 @@ export type Restaurants = {
 
 export const RestaurantsPage = () => {
   const { id } = useParams<{ id: string }>()
-  const [restaurant, setRestaurant] = useState<Restaurants | null>(null)
+  const { data: restaurant, isLoading } = useGetRestaurantByIdQuery(
+    id as string,
+    {
+      skip: !id
+    }
+  )
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res: Restaurants[]) => {
-        const selectedRestaurant = res.find((r) => r.id === Number(id))
-        setRestaurant(selectedRestaurant || null)
-      })
-      .catch((error) => console.error('Erro ao buscar restaurante:', error))
-  }, [id])
+  if (isLoading) {
+    return <div>Carregando...</div>
+  }
 
   if (!restaurant) {
-    return <div>Carregando...</div>
+    return <div>Restaurante não encontrado</div>
   }
 
   const fundo: BannerM[] = [
@@ -55,6 +55,7 @@ export const RestaurantsPage = () => {
       <Header />
       <Banner banner={fundo[0]} />
       <MenuList restaurants={[restaurant]} />
+      <Cart />
     </>
   )
 }

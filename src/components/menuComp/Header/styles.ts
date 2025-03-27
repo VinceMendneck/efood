@@ -48,6 +48,7 @@ export const LinkCart = styled.a`
   font-size: 18px;
   margin-top: -25px;
   white-space: nowrap;
+  cursor: pointer;
 
   @media screen and (max-width: 1366px) {
     white-space: normal;
