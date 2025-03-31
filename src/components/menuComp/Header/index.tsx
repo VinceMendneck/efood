@@ -24,7 +24,7 @@ export const Header = () => {
             </LinkItem>
             <LinkItem>
               <LinkCart href="/">
-                <img src={logo} alt="EFOODS" />
+                <img src={logo} alt="EFOOD" />
               </LinkCart>
             </LinkItem>
             <LinkItem>

@@ -38,6 +38,7 @@ export const CheckoutContainer = styled.div`
       margin: 8px 0;
       padding: 5px;
       border: 1px solid ${cores.rosaRodape};
+      font-weight: 700;
     }
 
     input:focus {

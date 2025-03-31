@@ -15,12 +15,15 @@ import { BtnCarrinho } from '../../generalComp/Button'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
+import { usePurchaseMutation } from '../../../services/api'
 
 export const Payment = () => {
   const { isOpen } = useSelector((state: RootReducer) => state.payment)
   const { items } = useSelector((state: RootReducer) => state.cart)
+  const checkoutData = useSelector((state: RootReducer) => state.checkout)
   const dispatch = useDispatch()
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [purchase, { isLoading, error, data }] = usePurchaseMutation()
 
   const closePaymentHandler = () => {
     dispatch(closePayment())
@@ -28,6 +31,7 @@ export const Payment = () => {
   }
 
   const backToCheckoutHandler = () => {
+    form.resetForm()
     dispatch(closePayment())
     dispatch(openCheckout())
   }
@@ -63,13 +67,43 @@ export const Payment = () => {
         .matches(/^(0[1-9]|1[0-2])$/, 'O mês deve ser entre 01 e 12'),
       year: Yup.string()
         .required('O ano é obrigatório')
-        .matches(/^\d{2}$/, 'O ano deve ter 2 dígitos')
+        .matches(/^\d{4}$/, 'O ano deve ter 4 dígitos')
     }),
-    onSubmit: () => {
-      const orderId = `ORD${Math.floor(Math.random() * 10000)}`
-      setSuccessMessage(orderId)
-      form.resetForm()
-      dispatch(clearCart())
+    onSubmit: async (values) => {
+      const purchaseData = {
+        products: items.map((item) => ({ id: item.id, price: item.preco })),
+        delivery: {
+          receiver: checkoutData.name,
+          address: {
+            description: checkoutData.street,
+            city: checkoutData.city,
+            zipCode: checkoutData.zip,
+            number: Number(checkoutData.number),
+            complement: checkoutData.complement || undefined
+          }
+        },
+        payment: {
+          card: {
+            name: values.cardName,
+            number: values.cardNumber.replace(/\s/g, ''),
+            code: Number(values.cvv),
+            expires: {
+              month: Number(values.month),
+              year: Number(values.year)
+            }
+          }
+        }
+      }
+
+      try {
+        const data = await purchase(purchaseData).unwrap()
+        setSuccessMessage(data.orderId)
+        form.resetForm()
+        dispatch(clearCart())
+      } catch (err) {
+        console.error('Erro na compra:', err)
+        alert('Erro na compra, por favor tente novamente.')
+      }
     }
   })
 
@@ -77,9 +111,9 @@ export const Payment = () => {
     <PaymentContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closePaymentHandler} />
       <Sidebar>
-        {successMessage ? (
+        {successMessage && data ? (
           <div className="success-message">
-            <h4>Pedido realizado - {successMessage}</h4>
+            <h4>Pedido realizado - {data.orderId}</h4>
             <p>
               Estamos felizes em informar que seu pedido já está em processo de
               preparação e, em breve, será entregue no endereço fornecido.
@@ -97,6 +131,9 @@ export const Payment = () => {
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
             </p>
+            <BtnCarrinho onClick={closePaymentHandler} title="Concluir">
+              {'Concluir'}
+            </BtnCarrinho>
           </div>
         ) : (
           <>
@@ -173,7 +210,7 @@ export const Payment = () => {
                   <InputMask
                     id="year"
                     name="year"
-                    mask="99"
+                    mask="9999"
                     value={form.values.year}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
@@ -185,8 +222,8 @@ export const Payment = () => {
                   </InputMask>
                 </div>
               </InlineFields2>
-              <BtnCarrinho title="Finalizar" type="submit">
-                {'Finalizar o pagamento'}
+              <BtnCarrinho title="Finalizar" type="submit" disabled={isLoading}>
+                {isLoading ? 'Processando...' : 'Finalizar o pagamento'}
               </BtnCarrinho>
               <BtnCarrinho
                 title="Voltar"
@@ -195,6 +232,9 @@ export const Payment = () => {
               >
                 {'Voltar para a edição de endereço'}
               </BtnCarrinho>
+              {error && (
+                <p style={{ color: 'red' }}>Erro ao processar o pagamento.</p>
+              )}
             </form>
           </>
         )}

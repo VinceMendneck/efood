@@ -1,10 +1,5 @@
-import { Restaurants } from '../../../pages/Home'
 import { Restaurant } from '../Restaurant'
 import { Container, List } from './styles'
-
-export type Props = {
-  restaurants: Restaurants[]
-}
 
 export const RestaurantsList = ({ restaurants }: Props) => {
   // Ordena os restaurantes, colocando os com destacado=true primeiro

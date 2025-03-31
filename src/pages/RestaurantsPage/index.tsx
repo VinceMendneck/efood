@@ -7,24 +7,7 @@ import { useGetRestaurantByIdQuery } from '../../services/api'
 import { Cart } from '../../components/menuComp/Cart'
 import { Checkout } from '../../components/menuComp/Checkout'
 import { Payment } from '../../components/menuComp/Payment'
-
-export type Restaurants = {
-  id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  capa: string
-  cardapio: {
-    foto: string
-    preco: number
-    id: number
-    nome: string
-    descricao: string
-    porcao: string
-  }[]
-}
+import { Loader } from '../../components/generalComp/Loader'
 
 export const RestaurantsPage = () => {
   const { id } = useParams<{ id: string }>()
@@ -36,7 +19,7 @@ export const RestaurantsPage = () => {
   )
 
   if (isLoading) {
-    return <div>Carregando...</div>
+    return <Loader />
   }
 
   if (!restaurant) {

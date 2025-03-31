@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../../store'
-import { close as closeCheckout } from '../../../store/reducers/checkout'
+import {
+  close as closeCheckout,
+  setCheckoutData
+} from '../../../store/reducers/checkout'
 import { open as openCart } from '../../../store/reducers/cart'
 import { open as openPayment } from '../../../store/reducers/payment'
 import { CheckoutContainer, Overlay, Sidebar, InlineFields } from './styles'
@@ -58,7 +61,8 @@ export const Checkout = () => {
         .matches(/^\d+$/, 'O número deve conter apenas dígitos'),
       complement: Yup.string()
     }),
-    onSubmit: () => {
+    onSubmit: (values) => {
+      dispatch(setCheckoutData(values))
       goToPaymentHandler()
     }
   })

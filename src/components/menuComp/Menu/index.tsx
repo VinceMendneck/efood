@@ -3,7 +3,7 @@ import { BtnCarrinho } from '../../generalComp/Button'
 import { CardMenu, DescricaoMenu, TituloMenu } from './styles'
 import { Modal } from '../Modal'
 
-export type Props = {
+type Props = {
   image: string
   title: string
   description: string

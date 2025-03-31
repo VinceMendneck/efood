@@ -1,10 +1,5 @@
-import { Restaurants } from '../../../pages/Home'
 import { Menu } from '../Menu'
 import { Container, List } from './styles'
-
-export type Props = {
-  restaurants: Restaurants[]
-}
 
 export const MenuList = ({ restaurants }: Props) => (
   <Container>

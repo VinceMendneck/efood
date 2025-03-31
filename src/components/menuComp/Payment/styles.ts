@@ -37,6 +37,7 @@ export const PaymentContainer = styled.div`
       width: 100%;
       margin: 8px 0;
       padding: 5px;
+      font-weight: 700;
     }
 
     input:focus {
