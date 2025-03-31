@@ -34,6 +34,7 @@ export const ButtonSaibaMais = styled(Link)`
 
   @media (max-width: ${breakpoints.tablet}) {
     padding: 2px 4px;
+    font-size: 12px;
   }
 `
 
@@ -53,5 +54,9 @@ export const ButtonCarrinho = styled.button<BtnCarrinhoProps>`
   &:hover {
     color: ${cores.rosaRodape};
     background-color: ${cores.rosa};
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 12px;
   }
 `

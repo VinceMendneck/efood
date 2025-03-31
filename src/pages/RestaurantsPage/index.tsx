@@ -5,6 +5,8 @@ import { Header } from '../../components/menuComp/Header'
 import { Banner } from '../../components/menuComp/Banner'
 import { useGetRestaurantByIdQuery } from '../../services/api'
 import { Cart } from '../../components/menuComp/Cart'
+import { Checkout } from '../../components/menuComp/Checkout'
+import { Payment } from '../../components/menuComp/Payment'
 
 export type Restaurants = {
   id: number
@@ -56,6 +58,8 @@ export const RestaurantsPage = () => {
       <Banner banner={fundo[0]} />
       <MenuList restaurants={[restaurant]} />
       <Cart />
+      <Checkout />
+      <Payment />
     </>
   )
 }

@@ -11,6 +11,7 @@ import {
 } from './styles'
 import { RootReducer } from '../../../store'
 import { close, remove } from '../../../store/reducers/cart'
+import { open as openCheckout } from '../../../store/reducers/checkout'
 
 export const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -22,6 +23,11 @@ export const Cart = () => {
 
   const removeItem = (id: number) => {
     dispatch(remove(id))
+  }
+
+  const handleContinueToCheckout = () => {
+    dispatch(close())
+    dispatch(openCheckout())
   }
 
   useEffect(() => {
@@ -57,7 +63,11 @@ export const Cart = () => {
               <p>Valor total</p>
               <p>R$ {totalValue.toFixed(2)}</p>
             </Valor>
-            <BtnCarrinho title="Continuar">
+            <BtnCarrinho
+              onClick={handleContinueToCheckout}
+              type="submit"
+              title="Continuar"
+            >
               {'Continuar com a entrega'}
             </BtnCarrinho>
           </>

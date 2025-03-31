@@ -9,6 +9,7 @@ export const CardMenu = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
+  height: 100%;
 
   img {
     width: 100%;

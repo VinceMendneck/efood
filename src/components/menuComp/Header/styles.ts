@@ -51,7 +51,6 @@ export const HeaderLinks = styled.ul`
   }
 
   > *:nth-child(2) {
-    /* Imagem */
     flex: 0 0 auto;
     text-align: center;
   }
@@ -74,6 +73,7 @@ export const HeaderLinks = styled.ul`
 
     @media (max-width: ${breakpoints.tablet}) {
       width: 80px;
+      margin-bottom: 30px;
     }
   }
 
@@ -87,6 +87,7 @@ export const HeaderLinks = styled.ul`
 
     > *:nth-child(1),
     > *:nth-child(3) {
+      margin: 0;
       flex: none;
       justify-content: center;
       width: 100%;

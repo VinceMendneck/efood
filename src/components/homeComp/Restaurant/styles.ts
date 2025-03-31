@@ -5,6 +5,8 @@ import { TagContainer } from '../Tag/styles'
 export const Card = styled.div`
   width: 472px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   img {
     display: block;
@@ -25,6 +27,23 @@ export const Card = styled.div`
 
   ${TagContainer} {
     margin-right: 8px;
+  }
+`
+
+export const Content = styled.div`
+  padding-top: 10px;
+  border: 1px solid ${cores.rosa};
+  background-color: ${cores.branco};
+  border-top: 0;
+  min-height: 234px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    min-height: 160px;
+    padding: 4px;
   }
 `
 
@@ -126,21 +145,5 @@ export const CardImg = styled.div`
     img {
       margin-bottom: -4px;
     }
-  }
-`
-
-export const Content = styled.div`
-  padding-top: 10px;
-  border: 1px solid ${cores.rosa};
-  background-color: ${cores.branco};
-  border-top: 0;
-  min-height: 234px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  @media (max-width: ${breakpoints.tablet}) {
-    min-height: 160px;
-    padding-top: 4px;
   }
 `
